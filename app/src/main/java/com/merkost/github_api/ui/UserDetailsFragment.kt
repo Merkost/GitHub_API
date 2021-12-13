@@ -10,10 +10,13 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.merkost.github_api.databinding.FragmentUserDetailsBinding
 import com.merkost.github_api.model.entity.users.UsersSearchResult
+import com.merkost.github_api.ui.adapters.ReposSearchResultAdapter
+import com.merkost.github_api.ui.adapters.UsersSearchResultAdapter
 
 class UserDetailsFragment : Fragment() {
 
     private val args: UserDetailsFragmentArgs by navArgs()
+    private val adapter = ReposSearchResultAdapter()
 
     private var _binding: FragmentUserDetailsBinding? = null
 
@@ -42,14 +45,12 @@ class UserDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setViews()
-        /*binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.)
-        }*/
     }
 
     private fun setViews() {
         binding.userImg.load(user.avatar_url)
-        binding.tvLogin.text = user.login.toString()
+        binding.tvLogin.text = user.login
+        binding.recyclerView.adapter = adapter
     }
 
     override fun onDestroyView() {

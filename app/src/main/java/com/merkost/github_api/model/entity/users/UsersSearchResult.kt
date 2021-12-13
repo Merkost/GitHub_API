@@ -2,8 +2,10 @@ package com.merkost.github_api.model.entity.users
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import java.io.Serializable
 
+@Parcelize
 data class UsersSearchResult(
 
     @SerializedName("login") val login: String,
@@ -25,4 +27,4 @@ data class UsersSearchResult(
     @SerializedName("starred_url") val starred_url: String,
     @SerializedName("events_url") val events_url: String,
     @SerializedName("site_admin") val site_admin: Boolean
-): Serializable
+): Parcelable

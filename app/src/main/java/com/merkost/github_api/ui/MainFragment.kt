@@ -47,7 +47,6 @@ class MainFragment : Fragment(), AndroidScopeComponent {
         subscribeOnViewModel()
         setButtons()
         setRecyclerView()
-
     }
 
     private fun setRecyclerView() {
@@ -61,9 +60,9 @@ class MainFragment : Fragment(), AndroidScopeComponent {
                 mainViewModel.searchFor(binding.searchEditText.text.toString())
             } else Toast.makeText(this.context, "Вы ничего не ввели!", Toast.LENGTH_SHORT).show()
         }
-        binding.buttonFirst.setOnClickListener {
+        /*binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        }*/
     }
 
     private fun subscribeOnViewModel() {

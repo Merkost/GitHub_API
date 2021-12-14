@@ -18,8 +18,8 @@ class UserDetailsViewModel(val repository: GithubRepository) : ViewModel() {
     fun getUserRepos(keyword: String) {
         viewModelScope.launch {
             _uiState.value = BaseViewState.Loading()
-            repository.searchGithubUsers(word = keyword).collect { searchResponse ->
-                _uiState.value = BaseViewState.Success(searchResponse)
+            repository.searchUserRepos(keyword).collect { userReposResponse ->
+                _uiState.value = BaseViewState.Success(userReposResponse)
             }
         }
     }

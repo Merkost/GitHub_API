@@ -1,8 +1,10 @@
 package com.merkost.github_api.model.repository
 
 import com.merkost.github_api.model.entity.repositories.RepositoriesSearchResponse
+import com.merkost.github_api.model.entity.user_repos.UserReposResponse
 import com.merkost.github_api.model.entity.users.UsersSearchResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 //Docs: https://developer.github.com/v3/search/
@@ -15,5 +17,9 @@ interface GitHubApi {
 
     @GET("search/users")
     suspend fun searchGithubUsers(@Query("q") term: String?): UsersSearchResponse
+
+    @GET("users/{id}/repos")
+    suspend fun searchUserRepos(@Path("id") userLogin: String?): UserReposResponse
+
 
 }

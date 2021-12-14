@@ -4,7 +4,9 @@ import com.merkost.github_api.model.api.GithubRepository
 import com.merkost.github_api.model.repository.GitHubRepositoryImpl
 import com.merkost.github_api.ui.MainActivity
 import com.merkost.github_api.ui.MainFragment
+import com.merkost.github_api.ui.UserDetailsFragment
 import com.merkost.github_api.viewmodels.MainViewModel
+import com.merkost.github_api.viewmodels.UserDetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -18,7 +20,7 @@ val appModule = module {
 val mainActivity = module {
     scope(named<MainActivity>()) {
         scope<MainFragment> { viewModel { MainViewModel(get()) } }
-
+        scope<UserDetailsFragment> { viewModel { UserDetailsViewModel(get()) } }
     }
 
 

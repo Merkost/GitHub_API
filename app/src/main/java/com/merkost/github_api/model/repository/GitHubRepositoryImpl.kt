@@ -2,7 +2,8 @@ package com.merkost.github_api.model.repository
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.merkost.github_api.model.api.GithubRepository
-import com.merkost.github_api.model.entity.users.UsersSearchResponse
+import com.merkost.github_api.model.entity.repositories.RepositoriesSearchResponse
+import com.merkost.github_api.model.entity.user_repos.UserReposItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.OkHttpClient
@@ -24,6 +25,11 @@ class GitHubRepositoryImpl() : GithubRepository {
     override suspend fun searchGithubUsers(word: String) = flow {
         val response = getService().searchGithubUsers(word)
         emit(response)
+    }
+
+    override suspend fun searchUserRepos(login: String): Flow<List<UserReposItem>> = flow {
+        val response = getService().searchUserRepos(login)
+            emit(response as List<UserReposItem>)
     }
 
     private fun getService(): GitHubApi {

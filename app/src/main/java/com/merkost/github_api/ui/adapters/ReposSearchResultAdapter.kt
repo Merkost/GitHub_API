@@ -6,10 +6,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.merkost.github_api.databinding.ItemRepositoryBinding
 import com.merkost.github_api.model.entity.repositories.RepositoriesSearchResult
+import com.merkost.github_api.model.entity.user_repos.UserReposItem
 
 class ReposSearchResultAdapter : RecyclerView.Adapter<ReposSearchResultAdapter.SearchResultViewHolder>() {
 
-    private var resultRepositories: List<RepositoriesSearchResult> = listOf()
+    private var resultRepositories: List<UserReposItem> = listOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,17 +33,17 @@ class ReposSearchResultAdapter : RecyclerView.Adapter<ReposSearchResultAdapter.S
         return resultRepositories.size
     }
 
-    fun updateResults(resultRepositories: List<RepositoriesSearchResult>) {
+    fun updateResults(resultRepositories: List<UserReposItem>) {
         this.resultRepositories = resultRepositories
         notifyDataSetChanged()
     }
 
     class SearchResultViewHolder(private val binding: ItemRepositoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(repositoriesSearchResult: RepositoriesSearchResult) {
-            binding.repositoryName.text = repositoriesSearchResult.fullName
+        fun bind(repositoriesSearchResult: UserReposItem) {
+            binding.repositoryName.text = repositoriesSearchResult.full_name
             binding.repositoryName.setOnClickListener {
-                Toast.makeText(itemView.context, repositoriesSearchResult.fullName, Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemView.context, repositoriesSearchResult.full_name, Toast.LENGTH_SHORT).show()
             }
         }
     }
